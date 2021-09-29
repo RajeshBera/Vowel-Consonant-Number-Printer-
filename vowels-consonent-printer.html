@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vowels-consonent-printer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<style>
+    
+    div {
+        padding:6.5em 5em;
+        text-align: center;
+        border: 2em solid rgb(0, 55, 175);
+        background: linear-gradient(-50deg,rgb(161, 247, 255),rgb(255, 165, 200));
+    }
+
+    #txt {
+        width: 50%;
+        padding: 0.50em 0.51em;
+        outline: none;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: bolder;
+        border: 1px solid rgb(255, 0, 106);
+    }
+
+    #btn {
+        padding: 0.4em 0.9em;
+        width: 20%;
+        font-size: 1em;
+        cursor: pointer;
+        background-color: rgb(255, 0, 106);
+        color: white;
+        border: 1px solid rgb(255, 0, 106);
+        transition: 0.5s;
+
+    }
+
+    #btn:hover {
+        background-color: white;
+        color: rgb(255, 0, 106);
+        border: 1px solid rgb(255, 0, 106);
+        box-shadow: 0.51em 0.51em 0em red;
+    }
+    #h3{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    #h1{
+        color: rgb(34, 128, 128);
+        font-family: Arial, Helvetica, sans-serif;
+        margin-bottom: -1em;
+    }
+    #h4{
+        color:green;
+    }  
+    #h5{
+        color:rgb(38, 0, 128);
+    }
+    hr{
+        width: 50%;
+        margin-top: 3em;
+        border: 0.01px solid rgb(255, 0, 76);
+        }
+</style>
+
+<body>
+    <div>
+        <input type="text" id="txt" placeholder="Enter a string">
+        <button onclick="count()" id="btn">Print <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        </button><br><br>
+        <h1 id="h3"></h1>
+
+        <h2 id="h1">Total count <i class="fa fa-caret-right" aria-hidden="true"></i>
+
+        </h2>
+        <hr>
+        <h3 id="h4">Vowels: 00</h3>
+        <h3 id="h5">Consonants: 00</h3>
+        <hr>
+    </div>
+</body>
+<script>
+
+
+    function count() {
+        var a, b, c, d;
+        const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+        const num=["1","2","3","4","5","6","7","8","9","0"];
+        const sym=["@",",","!","#","$","%","&","^","*","/","-","+","=","`","~",";",":","<",">","?","/",".","_",'"',"'",")","(","{","}","[","]"];
+        a = document.getElementById("txt").value;
+        b = document.getElementById("h4");
+        c = document.getElementById("h5");
+        d = document.getElementById("h3");
+        bt = document.getElementById("btn");
+        let cv = 0, cc = 0;
+        if (a == "" || a == null) {
+            d.innerHTML = "Please Enter a String !!";
+            d.style.color = "red";
+        }
+        else {
+            bt.disabled = true;
+            document.getElementById("txt").readOnly = true;
+            for (let i = 0; i < a.length; i++) {
+                if (vowels.includes(a[i])) {
+                    cv++;
+                }
+                else if(a[i]==" " || sym.includes(a[i])|| num.includes(a[i])) 
+                {
+                   continue;
+                }
+                else{
+                    cc++;
+                }
+            }
+            b.innerHTML = "Vowels: " + cv;
+            c.innerHTML = "Consonants: " + cc;
+        }
+
+    }
+
+</script>
+
+</html>
